@@ -1,11 +1,22 @@
 import DisplayCenter from "../../components/DisplayCenter/DisplayCenter";
 import { useForm } from "react-hook-form";
+import { useAddCarMutation } from "../../redux/features/cars/carsApi";
+import swal from "sweetalert";
 export default function AddCar() {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
+  const [addCar, { data, isLoading, isError, error }] = useAddCarMutation();
+  console.log({ data, isLoading, isError, error }, " => Line No: 11");
+  if (data?.data?._id) {
+    swal("Car Successfully Saved.");
+  }
+  if (!isLoading && !data?.data?._id && isError) {
+    swal(error?.data?.message || "Ops! Error Happen");
+  }
+
   const onSubmit = (data) => {
     const newCar = {
       name: data.name,
@@ -26,8 +37,9 @@ export default function AddCar() {
         },
       ],
     };
-    console.log(newCar, " => Line No: 29");
+    addCar(newCar);
   };
+
   return (
     <main>
       <DisplayCenter>
@@ -52,6 +64,7 @@ export default function AddCar() {
           <input
             className="input btn mt-2 input-bordered w-full max-w-xs"
             type="submit"
+            disabled={isLoading}
           />
         </form>
       </DisplayCenter>
