@@ -5,4 +5,8 @@ export default {
     extend: {},
   },
   plugins: [],
+  // baseUrl: ".",
+  // paths: {
+  //   "@/*": ["./src/*"],
+  // },
 };
