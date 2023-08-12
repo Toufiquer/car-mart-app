@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
-
+import { auth } from "../../firebase.config";
+import { useAuthState, useSignOut } from "react-firebase-hooks/auth";
 export default function Navbar() {
+  const [user] = useAuthState(auth);
+  const [signOut] = useSignOut(auth);
   const liItems = (
     <>
       <li>
@@ -48,12 +51,14 @@ export default function Navbar() {
           <ul className="menu menu-horizontal px-1">{liItems}</ul>
         </div>
         <div className="navbar-end">
-          {!true ? (
+          {!user?.uid ? (
             <Link to="/logIn" className="btn">
               Log In
             </Link>
           ) : (
-            <button className="btn">Sign Out</button>
+            <button onClick={() => signOut()} className="btn">
+              Sign Out
+            </button>
           )}
         </div>
       </div>
