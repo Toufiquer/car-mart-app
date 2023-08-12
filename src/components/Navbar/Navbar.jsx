@@ -7,13 +7,13 @@ export default function Navbar() {
   const liItems = (
     <>
       <li>
-        <Link>Item 1</Link>
+        <Link to="/">Home</Link>
       </li>
       <li>
-        <Link>Item 2</Link>
+        <Link to="addCar">Add Car</Link>
       </li>
       <li>
-        <Link>Item 3</Link>
+        <Link to="allCars">All Cars</Link>
       </li>
     </>
   );
