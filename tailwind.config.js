@@ -4,9 +4,6 @@ export default {
   theme: {
     extend: {},
   },
-  plugins: [],
-  // baseUrl: ".",
-  // paths: {
-  //   "@/*": ["./src/*"],
-  // },
+  // eslint-disable-next-line no-undef
+  plugins: [require("daisyui")],
 };

@@ -1,7 +1,7 @@
 const Home = () => {
   return (
     <div className="container mx-auto">
-      <div className="text-center">Hello</div>
+      <button className="btn">Button</button>
     </div>
   );
 };
