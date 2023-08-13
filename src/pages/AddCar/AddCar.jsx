@@ -20,7 +20,7 @@ export default function AddCar() {
   const onSubmit = (data) => {
     const newCar = {
       name: data.name,
-      description: "Product Description",
+      description: "automobile, by name auto, also called motorcar or car, a usually four-wheeled vehicle designed primarily for passenger transportation and commonly propelled (Read Henry Ford.s 1926 Britannica essay on mass production.",
       price: 100,
       unit: "kg",
       quantity: 10,

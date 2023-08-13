@@ -4,7 +4,8 @@ import { useGetCarQuery } from "../../redux/features/cars/carsApi";
 export default function CarDetails() {
   const { id } = useParams();
   const { data, isLoading, isError, error } = useGetCarQuery(id);
-  const { name, quantity } = data || {};
+  const { name, quantity } = data?.data || {};
+  console.log(data, id, " => Line No: 8");
   return (
     <div className="flex justify-center w-full">
       {" "}
