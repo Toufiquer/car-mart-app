@@ -87,10 +87,11 @@ export const carApi = apiSlice.injectEndpoints({
         try {
           const query = await queryFulfilled;
           // pessimistic cache update start
-          if (query?.data?._id) {
+          console.log(query.data.data, " => Line No: 90");
+          if (query.data.data._id) {
             dispatch(
               apiSlice.util.updateQueryData("getCars", undefined, (draft) => {
-                draft.data.push(query.data);
+                draft.data.push(query.data.data);
               })
             );
           }
