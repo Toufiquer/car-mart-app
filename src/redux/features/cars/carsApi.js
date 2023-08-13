@@ -31,19 +31,8 @@ export const carApi = apiSlice.injectEndpoints({
                 return curr;
               }
             });
-            Object.assign(draft, newValue);
+            Object.assign(draft.data, newValue);
           })
-        );
-        // update getInstructors query
-        const patchResult2 = dispatch(
-          apiSlice.util.updateQueryData(
-            "getInstructors",
-            undefined,
-            (draft) => {
-              draft.data.push(...arg.data);
-              // Object.assign(draft, newValue);
-            }
-          )
         );
         // optimistic cache update end
         try {
