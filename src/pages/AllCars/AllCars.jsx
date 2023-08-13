@@ -13,6 +13,15 @@ export default function AllCars() {
   if (!isLoading && isError) {
     content = <DisplayCenter>{error?.message}</DisplayCenter>;
   }
+    if (!isLoading && !isError && data?.data?.length === 0) {
+      content = (
+        <main className={` container mx-auto`}>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
+            <DisplayCenter>Ops! Nothing Was Found.</DisplayCenter>
+          </div>
+        </main>
+      );
+    }
   if (!isLoading && !isError && data?.data) {
     content = (
       <div className="container mx-auto">
