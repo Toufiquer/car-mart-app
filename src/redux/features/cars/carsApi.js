@@ -11,7 +11,7 @@ export const carApi = apiSlice.injectEndpoints({
       query: () => `/car`,
     }),
     getCar: builder.query({
-      query: (email) => `/car/${email}`,
+      query: (id) => `/car/${id}`,
     }),
     updateCar: builder.mutation({
       query: ({ id, data }) => ({

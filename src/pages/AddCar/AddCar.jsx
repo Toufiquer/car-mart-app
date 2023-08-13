@@ -23,7 +23,7 @@ export default function AddCar() {
       description: "Product Description",
       price: 100,
       unit: "kg",
-      quantity: 0,
+      quantity: 10,
 
       supplier: "5f1234567890",
       categories: [

@@ -5,10 +5,6 @@ import Cars from "./Cars";
 
 export default function AllCars() {
   const { data, isLoading, isError, error } = useGetCarsQuery();
-  console.log(
-    { data: data?.data, isLoading, isError, error },
-    " => Line No: 6"
-  );
   //   decided what to render
   let content = <></>;
   if (isLoading && !isError) {
