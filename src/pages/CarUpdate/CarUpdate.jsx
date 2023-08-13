@@ -1,6 +1,10 @@
 import { useForm } from "react-hook-form";
-import { useUpdateCarMutation } from "../../redux/features/cars/carsApi";
+import {
+  useGetCarQuery,
+  useUpdateCarMutation,
+} from "../../redux/features/cars/carsApi";
 import swal from "sweetalert";
+import { useParams } from "react-router-dom";
 export default function CarUpdate() {
   const {
     register,
@@ -9,7 +13,9 @@ export default function CarUpdate() {
   } = useForm();
   const [updateCar, { data, isLoading, isError, error }] =
     useUpdateCarMutation();
-  console.log({ data, isLoading, isError, error }, " => Line No: 11");
+  const { id } = useParams();
+  const { data: loadedData, isLoadingQ, isErrorQ, errorQ } = useGetCarQuery(id);
+  const { name, quantity, description } = loadedData?.data || {};
   if (data?.data?._id) {
     swal("Car Successfully Saved.");
   }
@@ -37,7 +43,7 @@ export default function CarUpdate() {
         },
       ],
     };
-    updateCar(newCar);
+    updateCar({ id, data: newCar });
   };
   return (
     <div className="flex justify-center w-full">
@@ -56,7 +62,7 @@ export default function CarUpdate() {
               <div className="form-control w-full max-w-xs">
                 <input
                   className="input input-bordered w-full max-w-xs"
-                  defaultValue="Car "
+                  defaultValue={name}
                   {...register("name")}
                 />
               </div>
