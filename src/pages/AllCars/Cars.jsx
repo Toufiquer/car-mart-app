@@ -2,6 +2,7 @@ import { MdDelete } from "react-icons/md";
 import { BiCopy } from "react-icons/bi";
 import { FcViewDetails } from "react-icons/fc";
 import { Link } from "react-router-dom";
+import DeleteIcon from "./DeleteIcon";
 export default function Cars({ data }) {
   const { name, quantity, _id } = data || {};
   const styleIcon = { height: "20px", width: "20px", cursor: "pointer" };
@@ -28,7 +29,7 @@ export default function Cars({ data }) {
               <Link to={`/carUpdate/${_id}`}>
                 <BiCopy style={styleIcon} />
               </Link>
-              <MdDelete style={styleIcon} />
+              <DeleteIcon data={{ id: _id, styleIcon }} />
             </div>
           </div>
         </div>
