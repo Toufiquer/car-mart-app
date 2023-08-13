@@ -63,9 +63,7 @@ export const carApi = apiSlice.injectEndpoints({
         // optimistic cache update start
         const patchResult1 = dispatch(
           apiSlice.util.updateQueryData("getCars", undefined, (draft) => {
-            const index = draft.data.findIndex(
-              (i) => parseInt(i._id) === parseInt(arg)
-            );
+            const index = draft.data.findIndex((i) => i._id === arg);
             draft.data.splice(index, 1);
           })
         );
@@ -89,30 +87,7 @@ export const carApi = apiSlice.injectEndpoints({
         try {
           const query = await queryFulfilled;
           // pessimistic cache update start
-          if (query?.data?.id) {
-            dispatch(
-              apiSlice.util.updateQueryData("getCars", undefined, (draft) => {
-                draft.data.push(query.data);
-              })
-            );
-          }
-          // pessimistic cache update end
-        } catch {}
-      },
-    }),
-    // for login
-    addLogIn: builder.mutation({
-      query: (data) => ({
-        url: `/carLogIn`,
-        method: "POST",
-        body: data,
-      }),
-      async onQueryStarted(arg, { queryFulfilled, dispatch }) {
-        // debugger;
-        try {
-          const query = await queryFulfilled;
-          // pessimistic cache update start
-          if (query?.data?.id) {
+          if (query?.data?._id) {
             dispatch(
               apiSlice.util.updateQueryData("getCars", undefined, (draft) => {
                 draft.data.push(query.data);
@@ -131,5 +106,4 @@ export const {
   useUpdateCarMutation,
   useDeleteCarMutation,
   useAddCarMutation,
-  useAddLogInMutation,
 } = carApi;
