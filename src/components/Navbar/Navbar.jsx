@@ -10,10 +10,10 @@ export default function Navbar() {
         <Link to="/">Home</Link>
       </li>
       <li>
-        <Link to="addCar">Add Car</Link>
+        <Link to="/addCar">Add Car</Link>
       </li>
       <li>
-        <Link to="allCars">All Cars</Link>
+        <Link to="/allCars">All Cars</Link>
       </li>
     </>
   );
